@@ -1,4 +1,5 @@
 import pygame
+import shutil
 import os
 import random
 from datetime import datetime
@@ -231,9 +232,12 @@ def main():
             #print(fstr)
             fstr = fstr.replace('</tbody></table>', "<tr><td>"+c+"</td><td>"+sc+"</td></tr>"+"</tbody></table>", 1)
             f.close()
-            #print(fstr)
+
             f = open("table2.html", mode="w")
+
             f.write(fstr)
+
+
 
 
         if len(enemies) == 0:
@@ -286,6 +290,9 @@ def main_menu():
     run = True
     while run:
         WIN.blit(BG, (0,0))
+        shutil.copy2('C:/Users/User/PycharmProjects/pythonProject4/table2.html',
+                     'C:/Users/User/PycharmProjects/pythonProject4Serv/templates/table2.html')
+
         title_label = title_font.render("Нажмите кнопку мыши...", 1, (255,255,255))
         WIN.blit(title_label, (WIDTH/2 - title_label.get_width()/2, 350))
         pygame.display.update()
